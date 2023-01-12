@@ -19,22 +19,22 @@ class SelectScene: SKScene {
         
         let buttonEasy = SKShapeNode(rectOf: CGSize(width: self.frame.size.width - 150, height: 40))
         buttonEasy.fillColor = .systemCyan
+        buttonEasy.name = "easy"
         let buttonEasytext = SKLabelNode(text: "かんたん")
-        buttonEasytext.name = "easy"
         buttonEasytext.fontColor = .white
         buttonEasytext.fontSize = 30
         
         let buttonNorm = SKShapeNode(rectOf: CGSize(width: self.frame.size.width - 150, height: 40))
         buttonNorm.fillColor = .systemCyan
+        buttonNorm.name = "normal"
         let buttonNormtext = SKLabelNode(text: "普通")
-        buttonNormtext.name = "normal"
         buttonNormtext.fontColor = .white
         buttonNormtext.fontSize = 30
         
         let buttonHard = SKShapeNode(rectOf: CGSize(width: self.frame.size.width - 150, height: 40))
         buttonHard.fillColor = .systemCyan
+        buttonHard.name = "hard"
         let buttonHardtext = SKLabelNode(text: "難しい")
-        buttonHardtext.name = "hard"
         buttonHardtext.fontColor = .white
         buttonHardtext.fontSize = 30
         
@@ -102,7 +102,9 @@ class SelectScene: SKScene {
         
         // ビューと同じサイズでシーンを作成する
         let scene = GameScene(size: self.frame.size)
-        scene.mode = atPoint(touch.location(in: self)).name ?? "normal"
-        view?.presentScene(scene)
+        if atPoint(touch.location(in: self)).name != nil {
+            scene.mode = atPoint(touch.location(in: self)).name ?? "normal"
+            view?.presentScene(scene)
+        }
     }
 }

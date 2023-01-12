@@ -39,10 +39,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var bestScoreLabelNode:SKLabelNode!
     let userDefaults:UserDefaults = UserDefaults.standard
 
-    var mode : String = "normal"
+    var mode : String = ""
     
     // SKView上にシーンが表示された時に呼ばれるメソッド
     override func didMove(to view: SKView) {
+        print(mode)
         // 重力を設定
         physicsWorld.gravity = CGVector(dx: 0, dy: -4)
         physicsWorld.contactDelegate = self
@@ -179,11 +180,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let movingDistance = self.frame.size.width + wallTexture.size().width
         
         var durationNum : Double = 4
-        if mode == "easy" {
+        if self.mode == "easy" {
             durationNum = 8
-        }else if mode == "normal" {
+        }else if self.mode == "normal" {
             durationNum = 4
-        }else if mode == "hard" {
+        }else if self.mode == "hard" {
             durationNum = 2
         }
         
@@ -282,11 +283,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let movingDistance = self.frame.size.width + ringoTexture.size().width
         
         var durationNum : Double = 10
-        if mode == "easy" {
+        if self.mode == "easy" {
             durationNum = 20
-        }else if mode == "normal" {
+        }else if self.mode == "normal" {
             durationNum = 10
-        }else if mode == "hard" {
+        }else if self.mode == "hard" {
             durationNum = 4
         }
         
