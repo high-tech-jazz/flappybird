@@ -180,12 +180,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let movingDistance = self.frame.size.width + wallTexture.size().width
         
         var durationNum : Double = 4
+        // 隙間位置の上下の揺れ幅を60ptとする
+        var random_y_range : CGFloat = 60
         if self.mode == "easy" {
             durationNum = 8
+            random_y_range = 30
         }else if self.mode == "normal" {
             durationNum = 4
+            random_y_range = 60
         }else if self.mode == "hard" {
             durationNum = 2
+            random_y_range = 120
         }
         
         // 画面外まで移動するアクションを作成
@@ -203,8 +208,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         // 鳥が通り抜ける隙間の大きさを鳥のサイズの４倍とする
         let slit_length = birdSize.height * 4
         
-        // 隙間位置の上下の揺れ幅を60ptとする
-        let random_y_range : CGFloat = 60
+        
         
         // 空の中央位置(y座標)を取得
         let groundSize = SKTexture(imageNamed: "ground").size()
@@ -288,11 +292,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }else if self.mode == "normal" {
             durationNum = 10
         }else if self.mode == "hard" {
-            durationNum = 4
+            durationNum = 5
         }
         
         // 画面外まで移動するアクションを作成
-        let moveRingo = SKAction.moveBy(x: -movingDistance, y: 0, duration: durationNum)
+        let moveRingo = SKAction.moveBy(x: -movingDistance + 50, y: 0, duration: durationNum)
         
         // 自身を取り除くアクションを作成
         let removeRingo = SKAction.removeFromParent()
@@ -523,6 +527,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             label.fontColor = .white
             label.fontSize = 60
             label.position = CGPoint(x: self.frame.size.width / 2, y: self.frame.size.height / 2 + 30)
+            label.zPosition = 100
             addChild(label)
             
             // 衝突後は地面と反発するのみとする(リスタートするまで壁と反発させない)

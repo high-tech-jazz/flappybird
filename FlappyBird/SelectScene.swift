@@ -22,6 +22,7 @@ class SelectScene: SKScene {
         buttonEasy.name = "easy"
         let buttonEasytext = SKLabelNode(text: "かんたん")
         buttonEasytext.fontColor = .white
+        buttonEasytext.name = "easy"
         buttonEasytext.fontSize = 30
         
         let buttonNorm = SKShapeNode(rectOf: CGSize(width: self.frame.size.width - 150, height: 40))
@@ -29,6 +30,7 @@ class SelectScene: SKScene {
         buttonNorm.name = "normal"
         let buttonNormtext = SKLabelNode(text: "普通")
         buttonNormtext.fontColor = .white
+        buttonNormtext.name = "normal"
         buttonNormtext.fontSize = 30
         
         let buttonHard = SKShapeNode(rectOf: CGSize(width: self.frame.size.width - 150, height: 40))
@@ -36,6 +38,7 @@ class SelectScene: SKScene {
         buttonHard.name = "hard"
         let buttonHardtext = SKLabelNode(text: "難しい")
         buttonHardtext.fontColor = .white
+        buttonHardtext.name = "hard"
         buttonHardtext.fontSize = 30
         
         let bestScoreLabel = SKLabelNode(text: "Ranking")
